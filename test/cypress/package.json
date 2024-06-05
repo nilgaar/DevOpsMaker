@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "cypress": "^13.10.0",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "cypress:open": "yarn cypress open",
+    "cypress:run": "yarn cypress run"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.1"
+  }
+}

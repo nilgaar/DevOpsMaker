@@ -1,0 +1,26 @@
+name: Run Cypress
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: build cypress
+        run: |
+          cd ./test/cypress
+          yarn
+
+      - name: run test
+        run: |
+          cd ./test/cypress
+          yarn cypress run

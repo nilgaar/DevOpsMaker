@@ -1,0 +1,25 @@
+name: Run Playwright ☕️
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: build Maven
+        run: |
+          cd ./test/playwright/java
+          sh build.sh
+      - name: run test
+        run: |
+          cd ./test/playwright/java
+          sh run.sh
