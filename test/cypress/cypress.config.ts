@@ -8,6 +8,7 @@ module.exports = defineConfig({
     baseUrl: "http://pops.cafe",
     supportFile: "./support/e2e.js",
     specPattern: "**/*.feature",
+    reporter: "mochawesome",
     async setupNodeEvents(
       on: Cypress.PluginEvents,
       config: Cypress.PluginConfigOptions

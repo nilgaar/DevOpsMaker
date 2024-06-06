@@ -24,3 +24,10 @@ jobs:
         run: |
           cd ./test/cypress
           yarn cypress run
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          name: cypress_test_results
+          path: ./test/cypress/mochawesome-report
+          retention-days: 1
+          overwrite: true
