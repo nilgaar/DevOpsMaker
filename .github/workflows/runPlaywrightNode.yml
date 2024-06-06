@@ -26,10 +26,19 @@ jobs:
       - name: run test
         run: |
           cd ./test/playwright/nodejs
-          yarn playwright test
+          yarn playwright test --reporter=line
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
           path: playwright-report/
           retention-days: 1
+
+      - uses: bacongobbler/azure-blob-storage-upload@main
+        with:
+          source_dir: ./test/playwright/nodejs/playwright-report
+          container_name: ${{ vars.CONTAINER_NAME }}"
+          connection_string: ${{ secrets.ConnectionString }}
+          extra_args: "--pattern *.html"
+          # WARNING: this will overwrite existing blobs in your blob storage
+          overwrite: "true"
