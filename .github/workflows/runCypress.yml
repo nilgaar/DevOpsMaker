@@ -23,11 +23,11 @@ jobs:
       - name: run test
         run: |
           cd ./test/cypress
-          yarn cypress run
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.3
+          yarn cypress run --reporter mochawesome
+
+      - uses: shallwefootball/s3-upload-action@master
         with:
-          name: cypress_test_results
-          path: ./test/cypress/mochawesome-report
-          retention-days: 1
-          overwrite: true
+          aws_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_bucket: ${{ secrets.AWS_BUCKET }}
+          source_dir: "./test/cypress/mochawesome-report/mochawesome.html"

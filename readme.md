@@ -14,9 +14,9 @@ DevOpsMaker aims to be a boilerplate repo to set up any web-testing framework an
 
 ## Featured Test Frameworks
 
-| Framework  | Language   | Cucumber | Container |
-| ---------- | ---------- | -------- | --------- |
-| Cypress    | TypeScript | Yes      | No        |
-| Playwright | Java       | No       | No        |
-| Playwright | TypeScript | No       | Yes       |
-| Playwright | Python     | No       | Yes       |
+| Framework  | Language   | Cucumber | Container | Report       |
+| ---------- | ---------- | -------- | --------- | ------------ |
+| Cypress    | TypeScript | Yes      | No        | Upload to S3 |
+| Playwright | Java       | No       | No        |              |
+| Playwright | TypeScript | No       | Yes       |              |
+| Playwright | Python     | No       | Yes       |              |
