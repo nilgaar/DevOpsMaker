@@ -23,7 +23,7 @@ jobs:
       - name: run test
         run: |
           cd ./test/cypress
-          yarn cypress run --reporter mochawesome
+          yarn cypress run --reporter html
 
       - name: safe report as artifact
         uses: actions/upload-artifact@v2
@@ -41,11 +41,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: mochawesome-report
-          path: test/cypress/mochawesome-report
+          path: ./test/cypress/mochawesome-report
 
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: "test/cypress/mochawesome-report"
+          source_dir: "./test/cypress/mochawesome-report"
