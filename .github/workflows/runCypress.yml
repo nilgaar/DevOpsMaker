@@ -25,9 +25,27 @@ jobs:
           cd ./test/cypress
           yarn cypress run --reporter mochawesome
 
+      - name: safe report as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: mochawesome-report
+          path: test/cypress/mochawesome-report
+
+  upload:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: get report as artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: mochawesome-report
+          path: test/cypress/mochawesome-report
+
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: "./test/cypress/mochawesome-report/mochawesome.html"
+          source_dir: "test/cypress/mochawesome-report"
