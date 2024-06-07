@@ -55,6 +55,7 @@ jobs:
           overwrite: "true"
 
   update-readme:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
