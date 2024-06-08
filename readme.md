@@ -1,9 +1,13 @@
-[![Run Cypress](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runCypress.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runCypress.yml)
-[![Run Playwright Java](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightJava.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightJava.yml)
-[![Run Playwright Nodejs](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightNode.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightNode.yml)
-[![Run Playwright Python](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightPython.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightPython.yml)
-[![Run Playwright Nodejs 📦](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightNodeContainer.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightNodeContainer.yml)
-[![Run Playwright 🐍 📦](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightPythonContainer.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/runPlaywrightPythonContainer.yml)
+_IaC_
+[![Deploy AWS VPC](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_aws_vpc.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_aws_vpc.yml)
+
+_testing_
+[![Run Cypress](https://github.com/nilgaar/DevOpsMaker/actions/workflows/cypress.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/cypress.yml)
+[![Run 🎭 Nodejs](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_nodejs.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_nodejs.yml)
+[![Run 🎭 Nodejs 📦](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_nodejs_%F0%9F%93%A6.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_nodejs_%F0%9F%93%A6.yml)
+[![Run 🎭 ☕️](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%E2%98%95%EF%B8%8F.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%E2%98%95%EF%B8%8F.yml)
+[![Run 🎭 🐍](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%F0%9F%90%8D.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%F0%9F%90%8D.yml)
+[![Run 🎭 🐍 📦](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%F0%9F%90%8D_%F0%9F%93%A6.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%F0%9F%90%8D_%F0%9F%93%A6.yml)
 
 > [!WARNING]
 > This repos is WIP
