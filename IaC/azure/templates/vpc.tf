@@ -8,10 +8,10 @@ variable "aws_infra_key" {
 }
 
 
-provider "aws"{
-    region="eu-west-1"
-    access_key= var.aws_infra_key_id
-    secret_key= var.aws_infra_key
+provider "azurerm" {
+    features {}
+    client_id  = var.aws_infra_key_id
+    
 }
 
 resource "aws_vpc" "main" {
