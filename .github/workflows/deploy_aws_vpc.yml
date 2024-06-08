@@ -1,0 +1,19 @@
+name: Deploy AWS VPC
+
+on:
+  push:
+    branches: ["dev"]
+  pull_request:
+    branches: ["dev"]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: opentofu/setup-opentofu@v1.0.3
+      - name: OpenTofu Setup Tofu
+        run: |
+          cd ./IaC/aws
+          tofu init

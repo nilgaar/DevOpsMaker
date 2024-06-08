@@ -20,3 +20,7 @@ DevOpsMaker aims to be a boilerplate repo to set up any web-testing framework an
 | Playwright | Java       | No       | No        |                                                                                                     |
 | Playwright | TypeScript | No       | Yes       | Is uploaded to [Azure Blob](https://makerreportuploads.blob.core.windows.net/reports/index.html)    |
 | Playwright | Python     | No       | Yes       |                                                                                                     |
+
+### References
+
+I got some inspiration for the infraestucture ideas from the book System Design Interview by Alex Xu

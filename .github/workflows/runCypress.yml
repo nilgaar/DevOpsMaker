@@ -49,3 +49,25 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
           source_dir: "test/cypress/mochawesome-report"
+# update-readme:
+#   needs: build
+#   runs-on: ubuntu-latest
+#   steps:
+#     - name: Checkout repo
+#       uses: actions/checkout@v3
+
+#     - name: Update README
+#       run: |
+#         echo "Adding new content to README" >> README.md
+
+#     - name: Commit and push if changed
+#       run: |
+#         git config --global user.email "githubautomat.pr1bp@passmail.net"
+#         git config --global user.name "Nil Gallego"
+#         git add README.md
+#         # Check for changes
+#         git diff --exit-code --cached || (
+#           # Only commit and push if there are changes
+#           git commit -m "Update README [skip ci]"
+#           git push
+#         )
