@@ -1,7 +1,7 @@
 provider "aws"{
     region="eu-west-1"
-    access_key= ${{ secrets.AWS_INFRA_KEY }}
-    secret_key=${{ secrets.AWS_INFRA_KEY_ID }}
+    access_key= AWS_INFRA_KEY_ID
+    secret_key= AWS_INFRA_KEY
 }
 
 resource "aws_vpc" "main" {
