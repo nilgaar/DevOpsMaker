@@ -14,9 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: opentofu/setup-opentofu@v1.0.3
-        env:
-          AWS_INFRA_KEY_ID: ${{ secrets.AWS_INFRA_KEY_ID }}
-          AWS_INFRA_KEY: ${{ secrets.AWS_INFRA_KEY }}
       - name: OpenTofu Setup Tofu
         run: |
           cd ./IaC/aws
@@ -25,3 +22,6 @@ jobs:
         run: |
           cd ./IaC/aws
           tofu validate
+        env:
+          AWS_INFRA_KEY_ID: ${{ secrets.AWS_INFRA_KEY_ID }}
+          AWS_INFRA_KEY: ${{ secrets.AWS_INFRA_KEY }}
