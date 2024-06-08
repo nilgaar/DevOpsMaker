@@ -10,8 +10,8 @@ variable "aws_infra_key" {
 
 provider "aws"{
     region="eu-west-1"
-    access_key= env.AWS_INFRA_KEY_ID
-    secret_key= env.AWS_INFRA_KEY
+    access_key= var.AWS_INFRA_KEY_ID
+    secret_key= var.AWS_INFRA_KEY
 }
 
 resource "aws_vpc" "main" {
