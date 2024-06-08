@@ -1,7 +1,7 @@
 provider "aws"{
     region="eu-west-1"
-    access_key= AWS_INFRA_KEY_ID
-    secret_key= AWS_INFRA_KEY
+    access_key= env.AWS_INFRA_KEY_ID
+    secret_key= env.AWS_INFRA_KEY
 }
 
 resource "aws_vpc" "main" {
