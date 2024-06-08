@@ -1,8 +1,10 @@
 variable "aws_infra_key_id" {
     type = string
+    nullable = false
 }
 variable "aws_infra_key" {
     type = string
+    nullable = false
 }
 
 
