@@ -23,5 +23,5 @@ jobs:
           cd ./IaC/aws
           tofu validate
         env:
-          AWS_INFRA_KEY_ID: ${{ secrets.AWS_INFRA_KEY_ID }}
-          AWS_INFRA_KEY: ${{ secrets.AWS_INFRA_KEY }}
+          aws_infra_key_id: ${{ secrets.AWS_INFRA_KEY_ID }}
+          aws_infra_key: ${{ secrets.AWS_INFRA_KEY }}
