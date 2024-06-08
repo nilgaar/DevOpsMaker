@@ -2,9 +2,9 @@ name: Deploy AWS VPC
 
 on:
   push:
-    branches: ["dev"]
+    branches: ["main"]
   pull_request:
-    branches: ["dev"]
+    branches: ["main"]
 
   workflow_dispatch:
 
@@ -12,8 +12,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: opentofu/setup-opentofu@v1.0.3
       - name: OpenTofu Setup Tofu
         run: |
           cd ./IaC/aws
           tofu init
+      - name: OpenTofu Validate Tofu
+        run: |
+          cd ./IaC/aws
+          tofu validate
+        env:
+          aws_infra_key_id: ${{ secrets.AWS_INFRA_KEY_ID }}
+          aws_infra_key: ${{ secrets.AWS_INFRA_KEY }}

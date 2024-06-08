@@ -1,7 +1,17 @@
+variable "aws_infra_key_id" {
+    type = string
+    nullable = false
+}
+variable "aws_infra_key" {
+    type = string
+    nullable = false
+}
+
+
 provider "aws"{
     region="eu-west-1"
-    access_key= ${{ secrets.AWS_INFRA_KEY }}
-    secret_key=${{ secrets.AWS_INFRA_KEY_ID }}
+    access_key= var.aws_infra_key_id
+    secret_key= var.aws_infra_key
 }
 
 resource "aws_vpc" "main" {
