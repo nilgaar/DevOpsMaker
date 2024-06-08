@@ -1,4 +1,4 @@
-name: Run Playwright 🐍
+name: Run 🎭 🐍
 on:
   push:
     branches: [main]
