@@ -14,14 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: opentofu/setup-opentofu@v1.0.3
-      - name: OpenTofu Setup Tofu
+      - name: OpenTofu Setup and Validate
         run: |
-          cd ./IaC/aws/templates/
-          tofu init
-      - name: OpenTofu Validate Tofu
-        run: |
-          cd ./IaC/aws/templates/
-          tofu validate
+          cd ./IaC/
+          sh init_and_validate.sh ./aws/templates/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_INFRA_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_INFRA_KEY }}
