@@ -1,3 +1,8 @@
+data "aws_ssm_parameter" "ubuntu22" {
+    name = "/aws/service/ami-ids/ubuntu/images/hvm-instance/ubuntu22.04"
+}
+
+
 resource "aws_ebs_volume" "ebs_example" {
     availability_zone = "eu-west-1a"
     size = 1
