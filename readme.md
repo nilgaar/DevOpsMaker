@@ -12,6 +12,10 @@
 | [![Run 🎭 🐍](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%F0%9F%90%8D.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%F0%9F%90%8D.yml)                              |
 | [![Run 🎭 🐍 📦](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%F0%9F%90%8D_%F0%9F%93%A6.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/%F0%9F%8E%AD_%F0%9F%90%8D_%F0%9F%93%A6.yml) |
 
+| Security                                                                                                                                                        |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![CodeQL](https://github.com/nilgaar/DevOpsMaker/actions/workflows/codeql.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/codeql.yml) |
+
 > [!WARNING]
 > This repos is WIP
 
