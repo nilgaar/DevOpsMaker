@@ -1,0 +1,29 @@
+name: Validate Azure Terraform templates
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: opentofu/setup-opentofu@v1.0.3
+      - name: OpenTofu Setup Tofu
+        run: |
+          cd ./IaC/azure/templates/
+          tofu init
+      - name: OpenTofu Validate Tofu
+        run: |
+          cd ./IaC/azure/templates/
+          tofu validate
+        env:
+          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
