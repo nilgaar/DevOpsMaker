@@ -11,6 +11,6 @@ if [ ! -d "$1" ]; then
 fi
 
 cd $1
-tofu init -auto-approve
-tofu validate -auto-approve
-tofu plan -auto-approve
+tofu init
+tofu validate
+tofu plan
