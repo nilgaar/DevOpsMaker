@@ -1,30 +1,22 @@
-
-
-resource "aws_ebs_volume" "ebs_example" {
-  availability_zone = "eu-west-1a"
-  size              = 1
+data "aws_ssm_parameter" "ubuntu22" {
+  name = "/aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id"
 }
 
 resource "aws_instance" "ec2example" {
-  ami               = "ami-0705384c0b33c194c"
-  instance_type     = "t2.micro"
+  ami               = data.aws_ssm_parameter.ubuntu22.value
+  instance_type     = "t3.micro"
   availability_zone = "eu-west-1a"
-  ebs_block_device {
-    device_name = "/dev/sdh"
-    volume_id   = aws_ebs_volume.ebs_example.id
-  }
-  # subnet and security group from:  ./vpn_network.tf
   subnet_id              = aws_subnet.subnet.id
   vpc_security_group_ids = [aws_security_group.sec_group.id]
 
-  user_data = <<EOF
-    #!/bin/bash
-    sudo apt-get update -y
-    sudo apt-get install nginx -y
-    sudo systemctl enable nginx
-    sudo systemctl start nginx
-    sudo rm /var/www/html/index.nginx-debian.html
-    echo "<h1>Welcome to Terraform</h1>" | sudo tee /var/www/html/index.html
-    EOF
-}
+  associate_public_ip_address = true
 
+  user_data = <<EOF
+#! /bin/bash
+sudo apt update -y
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
+echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
+EOF
+}

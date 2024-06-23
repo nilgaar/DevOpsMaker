@@ -1,26 +1,25 @@
 resource "aws_vpc" "vpc" {
-  cidr_block         = "10.0.0.0/16"
-  enable_dns_support = true
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = true
 }
 
-resource "aws_internet_gateway" "gateaway" {
+resource "aws_internet_gateway" "gateway" {
   vpc_id = aws_vpc.vpc.id
 }
 
 resource "aws_subnet" "subnet" {
   vpc_id                  = aws_vpc.vpc.id
-  cidr_block              = "10.0.0.0/24"
   availability_zone       = "eu-west-1a"
+  cidr_block              = "10.0.0.0/24"
   map_public_ip_on_launch = true
 }
 
 resource "aws_route_table" "route_table" {
   vpc_id = aws_vpc.vpc.id
 
-  # route all traffic into the internet gateway
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.gateaway.id
+    gateway_id = aws_internet_gateway.gateway.id
   }
 }
 
@@ -39,11 +38,17 @@ resource "aws_security_group" "sec_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
 }
