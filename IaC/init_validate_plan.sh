@@ -13,3 +13,4 @@ fi
 cd $1
 tofu init
 tofu validate
+tofu plan
