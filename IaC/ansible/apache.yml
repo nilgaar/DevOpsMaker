@@ -1,0 +1,27 @@
+- name: Install and start Apache
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update apt repo and cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start and enable Apache
+      systemd:
+        name: apache2
+        enabled: yes
+        state: started
+
+    - name: Set up index.html
+      copy:
+        content: "<h1>Deployed via Ansible</h1>"
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: "0644"

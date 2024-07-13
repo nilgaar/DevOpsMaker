@@ -9,17 +9,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
+    name: Deploy Infrastructure
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_INFRA_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_INFRA_KEY }}
     steps:
       - uses: actions/checkout@v3
+
       - uses: opentofu/setup-opentofu@v1.0.3
+        name: Setup OpenTofu
+
       - name: OpenTofu Setup and Validate
         run: |
           cd ./IaC/aws/terraform/
           tofu init
           tofu validate
           tofu plan -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_INFRA_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_INFRA_KEY }}
+
+      - name: Deploy VPC
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd ./IaC/aws/terraform/
+          tofu apply -auto-approve -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
