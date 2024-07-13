@@ -1,3 +1,4 @@
+---
 - name: Install and start Apache
   hosts: all
   become: yes

@@ -21,6 +21,11 @@ jobs:
       - uses: opentofu/setup-opentofu@v1.0.3
         name: Setup OpenTofu
 
+      - name: Setup SSH Key using webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: OpenTofu Setup and Validate
         run: |
           cd ./IaC/aws/terraform/
@@ -33,3 +38,8 @@ jobs:
         run: |
           cd ./IaC/aws/terraform/
           tofu apply -auto-approve -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
+
+      - name: Destroy VPC
+        run: |
+          cd ./IaC/aws/terraform/
+          tofu destroy -auto-approve -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
