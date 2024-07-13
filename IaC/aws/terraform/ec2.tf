@@ -14,7 +14,7 @@ resource "aws_instance" "ec2example" {
   provisioner "remote-exec" {
     inline = [
       "echo 'Waiting for instance to be fully ready...'",
-      "sleep 60"
+      "sleep 20"
     ]
   }
 
