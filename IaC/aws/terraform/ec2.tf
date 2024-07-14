@@ -11,13 +11,20 @@ resource "aws_instance" "ec2example" {
   associate_public_ip_address = true
   key_name                    = aws_key_pair.ec2_key_pair.key_name
 
-  provisioner "local-exec" {
-    command = "ansible-playbook -i '${self.public_ip},' --private-key ${path.module}/ ansible/playbook.yml"
-  }
-
   provisioner "remote-exec" {
     inline = [
-      "echo 'Waiting for instance to be ready'"
+      "echo 'Waiting for instance to be fully ready...'",
+      "sleep 20"
     ]
+  }
+
+  provisioner "local-exec" {
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i '${self.public_ip},' ${path.module}/../../ansible/apache.yml -u 'ubuntu'"
+  }
+
+  connection {
+    type = "ssh"
+    user = "ubuntu"
+    host = self.public_ip
   }
 }
