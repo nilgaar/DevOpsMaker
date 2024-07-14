@@ -1,7 +1,7 @@
-| IaC                                                                                                                                                                                                             |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Validate Azure Terraform templates](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_azure_vpc.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_azure_vpc.yml) |
-| [![Validate AWS Terraform templates](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_aws_vpc.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_aws_vpc.yml)       |
+| IaC                                                                                                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![Validate Azure Opentofu templates](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_azure_vpc.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_azure_vpc.yml) |
+| [![Validate AWS Opentofu templates](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_aws_vpc.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/deploy_aws_vpc.yml)       |
 
 | Testing                                                                                                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

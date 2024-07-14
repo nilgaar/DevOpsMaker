@@ -1,2 +1,2 @@
-IaC/aws/terraform/_provider.tf
+IaC/aws/opentofu/_provider.tf
 awsEC2s

@@ -1,4 +1,4 @@
-name: Validate Azure Terraform templates
+name: Validate Azure Opentofu templates
 
 on:
   push:
