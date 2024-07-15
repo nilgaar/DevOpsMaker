@@ -1,11 +1,7 @@
-data "aws_ssm_parameter" "ubuntu22" {
-  name = "/aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id"
-}
-
 resource "aws_instance" "ec2example" {
   ami                         = data.aws_ssm_parameter.ubuntu22.value
   instance_type               = "t3.micro"
-  availability_zone           = "eu-west-1a"
+  availability_zone           = var.availability_zone
   subnet_id                   = aws_subnet.subnet.id
   vpc_security_group_ids      = [aws_security_group.sec_group.id]
   associate_public_ip_address = true
