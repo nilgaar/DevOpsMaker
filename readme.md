@@ -16,14 +16,18 @@
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![CodeQL](https://github.com/nilgaar/DevOpsMaker/actions/workflows/codeql.yml/badge.svg)](https://github.com/nilgaar/DevOpsMaker/actions/workflows/codeql.yml) |
 
-> [!WARNING]
-> This repos is WIP
-
 # About DevOpsMaker
 
-DevOpsMaker aims to be a boilerplate repo to set up any web-testing framework and integrate it with your CI/CD platform
+I am improving my Opentofu skills by creating this DevOpsMaker project. This project is a collection of different DevOps tools and practices. The project is divided into **three main topics**:
 
-## Featured Test Frameworks
+## Infrastructure as Code (IaC)
+
+I want to get better at Opentofu. For this, I am following the O'Reilly book [**Terraform Up & Running**](https://www.oreilly.com/library/view/terraform-up-and/9781098116736/) by Yevgeniy Brikman.
+The book is mainly focused on AWS. I will implement alike infrastructures in Azure and K8s in the future.
+
+## Test Frameworks
+
+I've worked as a QA Automation Engineer for a while now. I've used different test frameworks like Cypress, Playwright, and Selenium. So I took the chance and also added some test frameworks to this project.
 
 | Framework  | Language   | Cucumber | Container | Last Report                                                                                         |
 | ---------- | ---------- | -------- | --------- | --------------------------------------------------------------------------------------------------- |
