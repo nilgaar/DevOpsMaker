@@ -26,3 +26,14 @@
         owner: www-data
         group: www-data
         mode: "0644"
+
+    - name: Check if the index.html is served correctly
+      uri:
+        url: http://localhost/index.html
+      register: result
+
+    - name: Assert that the content is correct
+      assert:
+        that:
+          - result.status == 200
+          - '"<h1>Deployed via Ansible</h1>" in result.content'

@@ -1,7 +1,3 @@
-data "aws_ssm_parameter" "ubuntu22" {
-  name = "/aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id"
-}
-
 resource "aws_instance" "ec2example" {
   ami                         = data.aws_ssm_parameter.ubuntu22.value
   instance_type               = "t3.micro"
