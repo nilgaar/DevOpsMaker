@@ -9,7 +9,7 @@ resource "aws_internet_gateway" "gateway" {
 
 resource "aws_subnet" "subnet" {
   vpc_id                  = aws_vpc.vpc.id
-  availability_zone       = "eu-west-1a"
+  availability_zone       = var.region
   cidr_block              = "10.0.0.0/24"
   map_public_ip_on_launch = true
 }

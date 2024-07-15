@@ -1,7 +1,7 @@
 resource "aws_instance" "ec2example" {
   ami                         = data.aws_ssm_parameter.ubuntu22.value
   instance_type               = "t3.micro"
-  availability_zone           = "eu-west-1a"
+  availability_zone           = var.region
   subnet_id                   = aws_subnet.subnet.id
   vpc_security_group_ids      = [aws_security_group.sec_group.id]
   associate_public_ip_address = true
