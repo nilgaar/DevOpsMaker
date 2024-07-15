@@ -7,11 +7,16 @@ variable "AWS_SECRET_ACCESS_KEY" {
   sensitive = true
 }
 
-variable "region" {
+variable "availability_zone" {
   type    = string
   default = "eu-west-1a"
 }
 
+variable "region" {
+  type    = string
+  default = "eu-west-1"
+}
+
 provider "aws" {
-  region = "eu-west-1"
+  region = var.region
 }
