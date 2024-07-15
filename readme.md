@@ -36,6 +36,7 @@ I've worked as a QA Automation Engineer for a while now. I've used different tes
 | Playwright | TypeScript | No       | Yes       | Is uploaded to [Azure Blob](https://makerreportuploads.blob.core.windows.net/reports/index.html)    |
 | Playwright | Python     | No       | Yes       |                                                                                                     |
 
-### References
+## Security
 
-I got some inspiration for the infraestucture ideas from the book System Design Interview by Alex Xu
+I also wanted to add some security checks to this project. I am using GitHub's CodeQL to check the codebase for security vulnerabilities.
+Will extend this part in the future.
