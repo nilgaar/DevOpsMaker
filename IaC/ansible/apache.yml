@@ -36,4 +36,4 @@
       assert:
         that:
           - result.status == 200
-          - '"<h1>Deployed via Ansible</h1>" in result.content'
+          - '"<h1>Deployed via Ansible</h1>" in result.body'
