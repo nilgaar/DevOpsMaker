@@ -16,9 +16,7 @@ resource "aws_lb" "lb" {
   name               = "asg-example-lb"
   load_balancer_type = "application"
   security_groups    = [aws_security_group.sec_group.id]
-  subnets            = [aws_subnet.asg_subnet.id]
-
-  enable_deletion_protection = false
+  subnets            = aws_subnet.asg_subnet.id
 }
 
 resource "aws_lb_listener" "lb_listener" {
