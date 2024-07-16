@@ -16,11 +16,11 @@ jobs:
       - uses: opentofu/setup-opentofu@v1.0.3
       - name: OpenTofu Setup Tofu
         run: |
-          cd ./IaC/azure/templates/
+          cd ./IaC/azure/tofu/
           tofu init
       - name: OpenTofu Validate Tofu
         run: |
-          cd ./IaC/azure/templates/
+          cd ./IaC/azure/tofu/
           tofu validate
         env:
           ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}

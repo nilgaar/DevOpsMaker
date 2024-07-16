@@ -7,11 +7,17 @@ resource "aws_internet_gateway" "gateway" {
   vpc_id = aws_vpc.vpc.id
 }
 
-resource "aws_subnet" "subnet" {
+resource "aws_subnet" "ec2_subnet" {
   vpc_id                  = aws_vpc.vpc.id
   availability_zone       = var.availability_zone
   cidr_block              = "10.0.0.0/24"
   map_public_ip_on_launch = true
+}
+
+resource "aws_subnet" "asg_subnet" {
+  vpc_id            = aws_vpc.vpc.id
+  availability_zone = var.availability_zone
+  cidr_block        = "10.0.1.0/24"
 }
 
 resource "aws_route_table" "route_table" {
@@ -23,8 +29,13 @@ resource "aws_route_table" "route_table" {
   }
 }
 
-resource "aws_route_table_association" "route_table_association" {
-  subnet_id      = aws_subnet.subnet.id
+resource "aws_route_table_association" "route_table_association_ec2" {
+  subnet_id      = aws_subnet.ec2_subnet.id
+  route_table_id = aws_route_table.route_table.id
+}
+
+resource "aws_route_table_association" "route_table_association_asg" {
+  subnet_id      = aws_subnet.asg_subnet.id
   route_table_id = aws_route_table.route_table.id
 }
 

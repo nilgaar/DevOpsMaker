@@ -28,7 +28,7 @@ jobs:
 
       - name: OpenTofu Setup and Validate
         run: |
-          cd ./IaC/aws/opentofu/
+          cd ./IaC/aws/tofu/
           tofu init
           tofu validate
           tofu plan -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
@@ -36,11 +36,11 @@ jobs:
       - name: Deploy VPC
         if: github.ref == 'refs/heads/main'
         run: |
-          cd ./IaC/aws/opentofu/
+          cd ./IaC/aws/tofu/
           tofu apply -auto-approve -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
 
       - name: Destroy VPC
         if: always()
         run: |
-          cd ./IaC/aws/opentofu/
+          cd ./IaC/aws/tofu/
           tofu destroy -auto-approve -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"

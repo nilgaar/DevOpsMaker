@@ -2,7 +2,7 @@ resource "aws_instance" "ec2example" {
   ami                         = data.aws_ssm_parameter.ubuntu22.value
   instance_type               = "t3.micro"
   availability_zone           = var.availability_zone
-  subnet_id                   = aws_subnet.subnet.id
+  subnet_id                   = aws_subnet.ec2_subnet.id
   vpc_security_group_ids      = [aws_security_group.sec_group.id]
   associate_public_ip_address = true
   key_name                    = aws_key_pair.ec2_key_pair.key_name
