@@ -22,7 +22,7 @@ resource "aws_subnet" "asg_subnet_1" {
 
 resource "aws_subnet" "asg_subnet_2" {
   vpc_id            = aws_vpc.vpc.id
-  availability_zone = var.availability_zone
+  availability_zone = "eu-west-1b"
   cidr_block        = "10.0.2.0/24"
 }
 
