@@ -16,7 +16,7 @@ resource "aws_lb" "lb" {
   name               = "asg-example-lb"
   load_balancer_type = "application"
   security_groups    = [aws_security_group.sec_group.id]
-  subnets            = [aws_subnet.asg_subnet.id]
+  subnets            = [aws_subnet.asg_subnet_1.id, aws_subnet.asg_subnet_2.id]
 }
 
 resource "aws_lb_listener" "lb_listener" {
@@ -36,7 +36,7 @@ resource "aws_autoscaling_group" "asg_example" {
   min_size                  = 1
   health_check_grace_period = 300
   launch_configuration      = aws_launch_configuration.launch_configuration.name
-  vpc_zone_identifier       = [aws_subnet.asg_subnet.id]
+  vpc_zone_identifier       = [aws_subnet.asg_subnet_1.id]
   target_group_arns         = [aws_lb_target_group.lb_target_group.arn]
   health_check_type         = "ELB"
 
