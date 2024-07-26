@@ -1,7 +1,7 @@
 resource "aws_launch_configuration" "launch_configuration" {
   name                        = "asg-launch-config"
   image_id                    = data.aws_ssm_parameter.ubuntu22.value
-  instance_type               = "t2.micro"
+  instance_type               = "t3.micro"
   security_groups             = [aws_security_group.sec_group.id]
   key_name                    = aws_key_pair.ec2_key_pair.key_name
   associate_public_ip_address = true
