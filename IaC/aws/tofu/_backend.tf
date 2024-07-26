@@ -1,9 +1,9 @@
 variable "bucket_name" {
-  default = "tofu-terraform-state"
+  default = "tofu-backend-state"
 }
 
 variable "dynamodb_table_name" {
-  default = "tofu-terraform-state-lock"
+  default = "tofu-state-lock"
 }
 
 resource "aws_s3_bucket" "state_backend" {
@@ -15,7 +15,7 @@ resource "aws_s3_bucket" "state_backend" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
