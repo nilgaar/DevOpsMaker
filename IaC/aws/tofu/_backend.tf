@@ -1,11 +1,23 @@
-# tofu {
-#   backend "s3" {
-#     bucket = "tofu-terraform-state"
-#     key    = "terraform.tfstate"
-#     region = "eu-west-1"
-#   }
-# }
+variable "bucket_name" {
+  default = "tofu-terraform-state"
+}
 
+variable "dynamodb_table_name" {
+  default = "tofu-terraform-state-lock"
+}
+
+resource "aws_s3_bucket" "state_backend" {
+  bucket = var.bucket_name
+
+  tags = {
+    Name        = var.bucket_name
+    Environment = "dev"
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "default" {
   bucket = aws_s3_bucket.state_backend.id
@@ -25,44 +37,26 @@ resource "aws_s3_bucket_public_access_block" "default" {
   restrict_public_buckets = true
 }
 
-// Lock system
-resource "aws_dynamodb_table" "tofu_backend_lock" {
-  name         = "tofu-terraform-state-lock"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-  tags = {
-    Name        = "tofu-terraform-state-lock"
-    Environment = "dev"
-  }
-
-}
-
-
-resource "aws_s3_bucket" "state_backend" {
-  bucket = "tofu-terraform-state"
-
-  lifecycle {
-    # prevent_destroy = true
-    prevent_destroy = false
-  }
-
-  tags = {
-    Name        = "tofu-terraform-state"
-    Environment = "dev"
-  }
-
-}
-
 resource "aws_s3_bucket_versioning" "state_backend" {
-  bucket = aws_s3_bucket.state_backend.bucket
+  bucket = aws_s3_bucket.state_backend.id
 
   versioning_configuration {
     status = "Enabled"
   }
-
 }
 
+resource "aws_dynamodb_table" "tofu_backend_lock" {
+  name         = var.dynamodb_table_name
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "LockID"
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+
+  tags = {
+    Name        = var.dynamodb_table_name
+    Environment = "dev"
+  }
+}
