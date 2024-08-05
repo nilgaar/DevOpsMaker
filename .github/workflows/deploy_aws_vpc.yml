@@ -26,6 +26,14 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: OpenTofu Setup Backend
+        run: |
+          cd ./IaC/aws/backend/
+          tofu init
+          tofu validate
+          tofu plan -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
+          tofu apply -auto-approve -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
+
       - name: OpenTofu Setup and Validate
         run: |
           cd ./IaC/aws/tofu/
@@ -38,6 +46,12 @@ jobs:
         run: |
           cd ./IaC/aws/tofu/
           tofu apply -auto-approve -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
+
+      - name: Destroy Backend
+        if: always()
+        run: |
+          cd ./IaC/aws/backend/
+          tofu destroy -auto-approve -var="AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -var="AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
 
       - name: Destroy VPC
         if: always()
