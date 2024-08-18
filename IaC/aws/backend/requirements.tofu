@@ -1,18 +1,10 @@
-variable "bucket_name" {
-  default = "tofu-backend-state"
-}
-
-variable "dynamodb_table_name" {
-  default = "tofu-state-lock"
+provider "aws" {
+  region = var.region
 }
 
 resource "aws_s3_bucket" "state_backend" {
   bucket        = var.bucket_name
   force_destroy = true
-  tags = {
-    Name        = var.bucket_name
-    Environment = "dev"
-  }
 
   lifecycle {
     prevent_destroy = false
@@ -54,11 +46,6 @@ resource "aws_dynamodb_table" "tofu_backend_lock" {
   attribute {
     name = "LockID"
     type = "S"
-  }
-
-  tags = {
-    Name        = var.dynamodb_table_name
-    Environment = "dev"
   }
 }
 
