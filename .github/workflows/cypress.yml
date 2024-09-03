@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: get report as artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: mochawesome-report
           path: test/cypress/mochawesome-report
