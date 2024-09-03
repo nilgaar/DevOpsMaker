@@ -40,7 +40,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: get report as artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: playwright-report
           path: ./test/playwright/nodejs/playwright-report
